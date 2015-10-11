@@ -1,0 +1,10 @@
+.\mcu_ini.o: user\src\mcu_ini.c
+.\mcu_ini.o: .\user\inc\mcu_ini.h
+.\mcu_ini.o: .\CMSIS\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h
+.\mcu_ini.o: D:\2\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include\core_cm3.h
+.\mcu_ini.o: D:\2\ARM\ARMCC\Bin\..\include\stdint.h
+.\mcu_ini.o: D:\2\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include\core_cmInstr.h
+.\mcu_ini.o: D:\2\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include\core_cmFunc.h
+.\mcu_ini.o: .\CMSIS\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.h
+.\mcu_ini.o: .\STM32F10x_StdPeriph_Driver\stm32f10x_conf.h
+.\mcu_ini.o: .\CMSIS\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h

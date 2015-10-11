@@ -7,10 +7,10 @@
 #include "stm32f10x_spi.h"
 
 #include "main.h"
- uint32_t  i=0;
+ uint32_t  i,m=0;
  uint16_t  ams=0;
  uint16_t  adc1=0;
- uint16_t dt=0;
+ uint16_t dt[400];
 uint32_t delay_count=0;
 uint16_t adc=0;
 uint8_t Receive_buf[256];
@@ -177,7 +177,10 @@ GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 GPIO_Init(GPIOC , &GPIO_InitStructure);
  
 		
-		
+		GPIO_InitStructure.GPIO_Pin = (  GPIO_Pin_7 );// забыл 7ю ногу настроить теперь все раьботает как часы
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+	GPIO_Init(GPIOA, &GPIO_InitStructure);
 		
   GPIO_InitStructure.GPIO_Pin = (  GPIO_Pin_6 );
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
@@ -279,21 +282,24 @@ GPIO_SetBits(GPIOA,GPIO_Pin_6);
 //		delay_ms(1);
 //		if(Receive_buf[Receive_R]==12)
 //		{	
-		delay_ms(10);
+		delay_ms(100000);
 		GPIO_ResetBits(GPIOA,GPIO_Pin_4);
 //		GPIO_ResetBits(GPIOA,GPIO_Pin_6);
 		delay_ms(10);
 		 SPI_I2S_SendData(SPI1, data);  //1 bait	
 		while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET)	
 		;
-		//GPIO_SetBits(GPIOA,GPIO_Pin_4);
 		if (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == SET)
 		{ 
-		dt =  SPI_I2S_ReceiveData(SPI1) ;
-			if(dt==0x0055)
+		dt[m] =  SPI_I2S_ReceiveData(SPI1) 
+			;
+				delay_ms(10);
+					GPIO_SetBits(GPIOA,GPIO_Pin_4);
+			if(dt[m]==0x0020)
 		{
 			GPIO_SetBits(GPIOC,GPIO_Pin_9);
 		}
+		m=m+1;
 //		USART_SendData(USART1,dt);	
 //		while (USART_GetFlagStatus(USART1, USART_FLAG_TXE)==RESET);
 //		}
@@ -307,7 +313,6 @@ GPIO_SetBits(GPIOA,GPIO_Pin_6);
 //		USART_SendData(USART1,dt);	
 //		while (USART_GetFlagStatus(USART1, USART_FLAG_TXE)==RESET);
 		}
-		GPIO_SetBits(GPIOA,GPIO_Pin_4);
 		
 	
 //		GPIO_SetBits(GPIOA,GPIO_Pin_6);
