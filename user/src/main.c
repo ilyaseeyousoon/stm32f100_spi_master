@@ -282,10 +282,10 @@ GPIO_SetBits(GPIOA,GPIO_Pin_6);
 //		delay_ms(1);
 //		if(Receive_buf[Receive_R]==12)
 //		{	
-		delay_ms(100000);
+		delay_ms(10000);
 		GPIO_ResetBits(GPIOA,GPIO_Pin_4);
 //		GPIO_ResetBits(GPIOA,GPIO_Pin_6);
-		delay_ms(10);
+//		delay_ms(5);
 		 SPI_I2S_SendData(SPI1, data);  //1 bait	
 		while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET)	
 		;
@@ -293,7 +293,7 @@ GPIO_SetBits(GPIOA,GPIO_Pin_6);
 		{ 
 		dt[m] =  SPI_I2S_ReceiveData(SPI1) 
 			;
-				delay_ms(10);
+//				delay_ms(10);
 					GPIO_SetBits(GPIOA,GPIO_Pin_4);
 //			if(dt[m]==0x0020)
 //		{
