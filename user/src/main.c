@@ -10,7 +10,7 @@
  uint32_t  i,m=0;
  uint16_t  ams=0;
  uint16_t  adc1=0;
- uint16_t dt[400];
+ uint16_t dt[600];
 uint32_t delay_count=0;
 uint16_t adc=0;
 uint8_t Receive_buf[256];
@@ -248,7 +248,7 @@ USART_InitTypeDef    USART_InitStruct;
   SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b; 
   SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low; 
   SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge; 
-	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_32;
+	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_16;
 	SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB; 
 	SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
 	
@@ -271,7 +271,7 @@ int main(void)
 GPIO_SetBits(GPIOA,GPIO_Pin_6);
 //SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
 
-	uint8_t data = 0x89;
+	uint8_t data = 0xF9;
  while(1)
     {
 			//USART_SendData(USART1,adc);	
@@ -293,7 +293,7 @@ GPIO_SetBits(GPIOA,GPIO_Pin_6);
 		{ 
 		dt[m] =  SPI_I2S_ReceiveData(SPI1) 
 			;
-//				delay_ms(10);
+				delay_ms(10);
 					GPIO_SetBits(GPIOA,GPIO_Pin_4);
 //			if(dt[m]==0x0020)
 //		{
