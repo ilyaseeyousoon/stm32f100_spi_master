@@ -271,7 +271,7 @@ int main(void)
 GPIO_SetBits(GPIOA,GPIO_Pin_6);
 //SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
 
-	uint8_t data = 0x99;
+	uint8_t data = 0x89;
  while(1)
     {
 			//USART_SendData(USART1,adc);	
@@ -295,10 +295,10 @@ GPIO_SetBits(GPIOA,GPIO_Pin_6);
 			;
 				delay_ms(10);
 					GPIO_SetBits(GPIOA,GPIO_Pin_4);
-			if(dt[m]==0x0020)
-		{
-			GPIO_SetBits(GPIOC,GPIO_Pin_9);
-		}
+//			if(dt[m]==0x0020)
+//		{
+//			GPIO_SetBits(GPIOC,GPIO_Pin_9);
+//		}
 		m=m+1;
 //		USART_SendData(USART1,dt);	
 //		while (USART_GetFlagStatus(USART1, USART_FLAG_TXE)==RESET);
