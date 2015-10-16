@@ -10,7 +10,7 @@
  uint32_t  i,m=0;
  uint16_t  ams=0;
  uint16_t  adc1=0;
- uint16_t dt[600];
+ uint16_t dt[100];
 uint32_t delay_count=0;
 uint16_t adc=0;
 uint8_t Receive_buf[256];
@@ -270,8 +270,9 @@ int main(void)
 	GPIO_SetBits(GPIOA,GPIO_Pin_4);
 GPIO_SetBits(GPIOA,GPIO_Pin_6);
 //SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
+	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);
 
-	uint8_t data = 0xF9;
+	uint8_t data = 0x49;
  while(1)
     {
 			//USART_SendData(USART1,adc);	
@@ -285,7 +286,7 @@ GPIO_SetBits(GPIOA,GPIO_Pin_6);
 		delay_ms(10000);
 		GPIO_ResetBits(GPIOA,GPIO_Pin_4);
 //		GPIO_ResetBits(GPIOA,GPIO_Pin_6);
-//		delay_ms(5);
+		delay_ms(15);
 		 SPI_I2S_SendData(SPI1, data);  //1 bait	
 		while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET)	
 		;
