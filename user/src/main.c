@@ -248,7 +248,7 @@ USART_InitTypeDef    USART_InitStruct;
   SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b; 
   SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low; 
   SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge; 
-	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_4;
+	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_16;
 	SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB; 
 	SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
 	
@@ -270,8 +270,8 @@ int main(void)
 	GPIO_SetBits(GPIOA,GPIO_Pin_4);
 GPIO_SetBits(GPIOA,GPIO_Pin_6);
 //SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
-	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);
-
+	
+m=0;
 	uint8_t data = 0x25;
  while(1)
     {
@@ -288,7 +288,7 @@ GPIO_SetBits(GPIOA,GPIO_Pin_6);
 	
 //		GPIO_ResetBits(GPIOA,GPIO_Pin_6);
 		delay_ms(10);
-		 SPI_I2S_SendData(SPI1, data);  //1 bait	
+		 SPI_I2S_SendData(SPI1, m);  //1 bait	
 		while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET)	
 		;
 		if (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == SET)
@@ -301,8 +301,9 @@ GPIO_SetBits(GPIOA,GPIO_Pin_6);
 //		{
 //			GPIO_SetBits(GPIOC,GPIO_Pin_9);
 //		}
+				USART_SendData(USART1,dt[m]);	
 		m=m+1;
-//		USART_SendData(USART1,dt);	
+	
 //		while (USART_GetFlagStatus(USART1, USART_FLAG_TXE)==RESET);
 //		}
 //		SPI_I2S_SendData(SPI1, data);  //1 bait	
