@@ -7,13 +7,13 @@
 #include "stm32f10x_spi.h"
 
 #include "main.h"
- uint32_t  i,m=0;
+ uint16_t  i,m=0;
  uint16_t  ams=0;
  uint16_t  adc1=0;
  uint16_t dt[100];
 uint32_t delay_count=0;
 uint16_t adc=0;
-uint8_t Receive_buf[256];
+uint16_t Receive_buf[256];
 uint8_t Receive_W=0,Receive_R=0,Receive_C=0;
 uint32_t tetra=0;
  
@@ -245,10 +245,10 @@ USART_InitTypeDef    USART_InitStruct;
 		RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
 	SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex; 
 	SPI_InitStructure.SPI_Mode = SPI_Mode_Master;
-  SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b; 
+  SPI_InitStructure.SPI_DataSize = SPI_DataSize_16b; 
   SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low; 
   SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge; 
-	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_32;
+	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_16;
 	SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB; 
 	SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
 	
