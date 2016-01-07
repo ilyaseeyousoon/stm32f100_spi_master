@@ -10,7 +10,7 @@
  uint16_t  i,m=0;
  uint16_t  ams=0;
  uint16_t  adc1=0;
- uint16_t dt[100];
+ uint16_t dt[100],itog[100];
 uint32_t delay_count=0;
 uint16_t adc=0;
 uint16_t Receive_buf[256];
@@ -297,10 +297,12 @@ m=0;
 			;
 				delay_ms(10);
 					GPIO_SetBits(GPIOA,GPIO_Pin_4);
+			itog[m]=(dt[m]<<8)+(dt[m]>>8);
 //			if(dt[m]==0x0020)
 //		{
 //			GPIO_SetBits(GPIOC,GPIO_Pin_9);
 //		}
+			
 				USART_SendData(USART1,dt[m]);	
 		m=m+1;
 	
