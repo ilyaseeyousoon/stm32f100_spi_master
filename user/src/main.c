@@ -271,23 +271,33 @@ int main(void)
 GPIO_SetBits(GPIOA,GPIO_Pin_6);
 //SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
 	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);
+uint16_t data[15] ;
+	data[0]=0x49;
+	data[1]=0x48;
+	data[2]=0x47;
+	data[3]=0x46;
+	data[4]=0x45;
+	data[5]=0x44;
+	data[6]=0x43;
+	data[7]=0x42;
+	data[8]=0x41;
+	data[9]=0x19;
+	data[10]=0x29;
+	data[11]=0x39;
+	data[12]=0x59;
+	data[13]=0x69;
+	data[14]=0x79;
 
-	uint8_t data = 0x49;
+	uint16_t u=0;
  while(1)
     {
-			//USART_SendData(USART1,adc);	
-	  //	delay_ms(1);
-	//	USART_SendData(USART1,0xFF);
-//			 if (Receive_C>0)
-//	{
-//		delay_ms(1);
-//		if(Receive_buf[Receive_R]==12)
-//		{	
+			if (u<15)
+			{
+for(i=0;i<1000000;i++){}
 		delay_ms(10000);
 		GPIO_ResetBits(GPIOA,GPIO_Pin_4);
-//		GPIO_ResetBits(GPIOA,GPIO_Pin_6);
 		delay_ms(15);
-		 SPI_I2S_SendData(SPI1, data);  //1 bait	
+		 SPI_I2S_SendData(SPI1, data[u]);  //1 bait	
 		while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET)	
 		;
 		if (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == SET)
@@ -296,33 +306,17 @@ GPIO_SetBits(GPIOA,GPIO_Pin_6);
 			;
 				delay_ms(10);
 					GPIO_SetBits(GPIOA,GPIO_Pin_4);
-//			if(dt[m]==0x0020)
-//		{
-//			GPIO_SetBits(GPIOC,GPIO_Pin_9);
-//		}
 		m=m+1;
-//		USART_SendData(USART1,dt);	
-//		while (USART_GetFlagStatus(USART1, USART_FLAG_TXE)==RESET);
-//		}
-//		SPI_I2S_SendData(SPI1, data);  //1 bait	
-//		while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET)	
-
-//		GPIO_SetBits(GPIOA,GPIO_Pin_4);
-//		if (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == SET)
-//		{ 
-//		dt =  SPI_I2S_ReceiveData(SPI1) ;
-//		USART_SendData(USART1,dt);	
-//		while (USART_GetFlagStatus(USART1, USART_FLAG_TXE)==RESET);
+    u=u+1;
 		}
-		
-	
-//		GPIO_SetBits(GPIOA,GPIO_Pin_6);
-//		}
-//		Receive_R++;
-//		Receive_C--;
-//		}
-		}
-		
-	}
+	    }
+			else
+			{
+			delay_ms(10000);delay_ms(10000);delay_ms(10000);delay_ms(10000);delay_ms(10000);delay_ms(10000);delay_ms(10000);delay_ms(10000);
+				u=0;
+			
+			}
+		    }	
+	        }
 	
       
