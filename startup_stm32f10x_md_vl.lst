@@ -483,10 +483,9 @@ ork --depend=.\startup_stm32f10x_md_vl.d -o.\startup_stm32f10x_md_vl.o -ID:\ALL
 _PROJ\stm32f100_disc_programs\stm32f100_spi_master\stm32f100_spi_master\RTE -ID
 :\ALL_PROJ\stm32f100_disc_programs\stm32f100_spi_master\stm32f100_spi_master\RT
 E\Device\STM32F100RB -ID:\2\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include -ID:\2\ARM\P
-ACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include --predefine="__EVAL SETA 1" --prede
-fine="__UVISION_VERSION SETA 515" --predefine="_RTE_ SETA 1" --predefine="STM32
-F10X_MD_VL SETA 1" --list=.\startup_stm32f10x_md_vl.lst RTE\Device\STM32F100RB\
-startup_stm32f10x_md_vl.s
+ACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include --predefine="__UVISION_VERSION SETA
+ 515" --predefine="_RTE_ SETA 1" --predefine="STM32F10X_MD_VL SETA 1" --list=.\
+startup_stm32f10x_md_vl.lst RTE\Device\STM32F100RB\startup_stm32f10x_md_vl.s
 
 
 
@@ -1194,4 +1193,4 @@ Symbol: __use_two_region_memory
       None
 Comment: __use_two_region_memory unused
 3 symbols
-408 symbols in table
+407 symbols in table

@@ -1,0 +1,13 @@
+.\hello-world.o: UIP\hello-world.c
+.\hello-world.o: UIP\hello-world.h
+.\hello-world.o: .\UIP\uip\uipopt.h
+.\hello-world.o: .\UIP\uip-conf.h
+.\hello-world.o: D:\2\ARM\ARMCC\Bin\..\include\inttypes.h
+.\hello-world.o: D:\2\ARM\ARMCC\Bin\..\include\stdint.h
+.\hello-world.o: .\UIP\hello-world.h
+.\hello-world.o: .\UIP\uip\psock.h
+.\hello-world.o: .\UIP\uip\pt.h
+.\hello-world.o: .\UIP\uip\lc.h
+.\hello-world.o: .\UIP\uip\lc-switch.h
+.\hello-world.o: .\UIP\uip\uip.h
+.\hello-world.o: D:\2\ARM\ARMCC\Bin\..\include\string.h

@@ -5,8 +5,10 @@
 #include <stm32f10x_gpio.h>
 #include "stm32f10x_adc.h"
 #include "stm32f10x_spi.h"
-
 #include "main.h"
+#include "enc28j60.h"
+#include "uip_arp.h"
+#include "uip.h"
  uint32_t  i,m=0;
  uint16_t  ams=0;
  uint16_t  adc1=0;
@@ -45,6 +47,81 @@ while(!(USART1->SR & USART_SR_TC));
 USART1->DR=data; 
 
 }
+	void uip_log(char *m)
+{
+
+}
+
+void vTask_uIP_periodic(void)
+{
+	uint32_t i;
+	static uint8_t delay_arp = 0;
+   static uint32_t delaystamp = 0;
+
+   if (delaystamp < timestamp)
+   {
+		delay_arp++;
+		for (i = 0; i < UIP_CONNS; i++)
+      {
+			uip_periodic(i);
+			if (uip_len > 0)
+         {
+				uip_arp_out();
+				enc28j60_send_packet((uint8_t *) uip_buf, uip_len);
+			}
+		}
+
+#if UIP_UDP
+		for(i = 0; i < UIP_UDP_CONNS; i++)
+      {
+			uip_udp_periodic(i);
+			if(uip_len > 0)
+         {
+				uip_arp_out();
+				network_send();
+			}
+		}
+#endif /* UIP_UDP */
+
+		if (delay_arp >= 50)
+      {
+			delay_arp = 0;
+			uip_arp_timer();
+		}
+      delaystamp = timestamp + 500000;
+      
+   }
+}
+//--------------------------------------------------------------
+void vTask_uIP(void)
+{
+   uip_len = enc28j60_recv_packet((uint8_t *) uip_buf, UIP_BUFSIZE);
+   #define BUF ((struct uip_eth_hdr *)&uip_buf[0])
+   
+   if (uip_len > 0)
+   {
+      if (BUF->type == htons(UIP_ETHTYPE_IP))
+      {
+         uip_arp_ipin();
+         uip_input();
+         if (uip_len > 0)
+         {
+            uip_arp_out();
+            enc28j60_send_packet((uint8_t *) uip_buf, uip_len);
+         }
+      }
+      else if (BUF->type == htons(UIP_ETHTYPE_ARP))
+      {
+         uip_arp_arpin();
+         if (uip_len > 0)
+         {
+            enc28j60_send_packet((uint8_t *) uip_buf, uip_len);
+         }
+      }
+   }
+}
+
+
 	void  RCC_Configuration(void)
 	{
 		RCC_SYSCLKConfig(RCC_SYSCLKSource_HSI);
@@ -271,52 +348,26 @@ int main(void)
 GPIO_SetBits(GPIOA,GPIO_Pin_6);
 //SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
 	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);
-uint16_t data[15] ;
-	data[0]=0x01;
-	data[1]=0x02;
-	data[2]=0x03;
-	data[3]=0x04;
-	data[4]=0x05;
-	data[5]=0x06;
-	data[6]=0x07;
-	data[7]=0x08;
-	data[8]=0x09;
-	data[9]=0x10;
-	data[10]=0x11;
-	data[11]=0x12;
-	data[12]=0x13;
-	data[13]=0x14;
-	data[14]=0x15;
+//struct uip_eth_addr mac = { { 0x00, 0x12, 0x34, 0x56, 0x78, 0x00 } };
+//uip_ipaddr_t ipaddr;
+//enc28j60_init(mac.addr);
+//uip_init();
+//uip_arp_init();
+//hello_world_init();
+//uip_setethaddr(mac);
+//uip_ipaddr(ipaddr, 192, 168, 0, 57);
+//uip_sethostaddr(ipaddr);
+//uip_ipaddr(ipaddr, 192, 168, 0, 1);
+//uip_setdraddr(ipaddr);
+//uip_ipaddr(ipaddr, 255, 255, 255, 0);
+//uip_setnetmask(ipaddr);
 
-	uint16_t u=0;
  while(1)
     {
-			if (u<15)
-			{
-for(i=0;i<1000000;i++){}
-		delay_ms(10000);
-		GPIO_ResetBits(GPIOA,GPIO_Pin_4);
-		delay_ms(15);
-		 SPI_I2S_SendData(SPI1, data[u]);  //1 bait	
-		while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET)	
-		;
-		if (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == SET)
-		{ 
-		dt[m] =  SPI_I2S_ReceiveData(SPI1) 
-			;
-				delay_ms(10);
-					GPIO_SetBits(GPIOA,GPIO_Pin_4);
-		m=m+1;
-    u=u+1;
-		}
-	    }
-			else
-			{
-			delay_ms(10000);delay_ms(10000);delay_ms(10000);delay_ms(10000);delay_ms(10000);delay_ms(10000);delay_ms(10000);delay_ms(10000);
-				u=0;
-			
-			}
+			 SPI_I2S_SendData(SPI1, 0x55);  //1 bait	
+				delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);
+//vTask_uIP();		
 		    }	
-	        }
+        }
 	
       
