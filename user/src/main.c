@@ -344,10 +344,12 @@ int main(void)
 
 	init_button();
 	SysTick_Config(SystemCoreClock/200000);//10 mks
-	GPIO_SetBits(GPIOA,GPIO_Pin_4);
-GPIO_SetBits(GPIOA,GPIO_Pin_6);
-//SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
-	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);
+	
+//	GPIO_SetBits(GPIOA,GPIO_Pin_4);
+//GPIO_SetBits(GPIOA,GPIO_Pin_6);
+////SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
+//	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);
+	
 //struct uip_eth_addr mac = { { 0x00, 0x12, 0x34, 0x56, 0x78, 0x00 } };
 //uip_ipaddr_t ipaddr;
 //enc28j60_init(mac.addr);
@@ -364,10 +366,20 @@ GPIO_SetBits(GPIOA,GPIO_Pin_6);
 
  while(1)
     {
+			GPIO_ResetBits(GPIOA,GPIO_Pin_4);
 			 SPI_I2S_SendData(SPI1, 0x55);  //1 bait	
+			while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET)	
+		;
+		if (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == SET)
+		{ 
+		dt[m] =  SPI_I2S_ReceiveData(SPI1) 
+			;
+				delay_ms(10);
+					GPIO_SetBits(GPIOA,GPIO_Pin_4);
 				delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);
 //vTask_uIP();		
 		    }	
         }
+			}
 	
       

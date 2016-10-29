@@ -22,7 +22,7 @@ Dialog DLL:      TCM.DLL V1.14.5.0
  
 <h2>Project:</h2>
 D:\ALL_PROJ\stm32f100_disc_programs\stm32f100_spi_master\stm32f100_spi_master\disc.uvprojx
-Project File Date:  10/29/2016
+Project File Date:  10/30/2016
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.05 update 2 (build 169)', folder: 'D:\2\ARM\ARMCC\Bin'
@@ -30,13 +30,10 @@ Build target 'Target 1'
 compiling main.c...
 .\user\inc\main.h(8): warning:  #1-D: last line of file ends without a newline
         #endif
-user\src\main.c(373): warning:  #1-D: last line of file ends without a newline
-        
-user\src\main.c: 2 warnings, 0 errors
-linking...
-Program Size: Code=17220 RO-data=368 RW-data=160 ZI-data=7624  
-FromELF: creating hex file...
-".\disc.axf" - 0 Error(s), 2 Warning(s).
+user\src\main.c(9): error:  #5: cannot open source input file "enc28j60.h": No such file or directory
+  #include "enc28j60.h"
+user\src\main.c: 1 warning, 1 error
+".\disc.axf" - 1 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -67,6 +64,7 @@ Package Vendor: Keil
       Source file:   Device\Source\ARM\startup_stm32f10x_md_vl.s
       Source file:   Device\Source\system_stm32f10x.c
       Include file:  RTE_Driver\Config\RTE_Device.h
+Target not created.
 </pre>
 </body>
 </html>

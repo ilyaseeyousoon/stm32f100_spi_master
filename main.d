@@ -13,16 +13,3 @@
 .\main.o: .\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h
 .\main.o: .\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h
 .\main.o: .\user\inc\main.h
-.\main.o: .\UIP\enc28j60.h
-.\main.o: .\UIP\uip\uip.h
-.\main.o: .\UIP\uip\uipopt.h
-.\main.o: .\UIP\uip-conf.h
-.\main.o: D:\2\ARM\ARMCC\Bin\..\include\inttypes.h
-.\main.o: .\UIP\hello-world.h
-.\main.o: .\UIP\uip\uipopt.h
-.\main.o: .\UIP\uip\psock.h
-.\main.o: .\UIP\uip\pt.h
-.\main.o: .\UIP\uip\lc.h
-.\main.o: .\UIP\uip\lc-switch.h
-.\main.o: .\UIP\uip\uip_arp.h
-.\main.o: .\UIP\delay.h
