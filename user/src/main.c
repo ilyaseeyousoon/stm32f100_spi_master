@@ -5,7 +5,9 @@
 #include <stm32f10x_gpio.h>
 #include "stm32f10x_adc.h"
 #include "stm32f10x_spi.h"
-
+#include "enc28j60.h"
+#include "uip_arp.h"
+#include "uip.h"
 #include "main.h"
  uint32_t  i,m=0;
  uint16_t  ams=0;

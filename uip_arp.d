@@ -1,0 +1,14 @@
+.\uip_arp.o: UIP\uip\uip_arp.c
+.\uip_arp.o: UIP\uip\uip_arp.h
+.\uip_arp.o: UIP\uip\uip.h
+.\uip_arp.o: UIP\uip\uipopt.h
+.\uip_arp.o: .\UIP\uip-conf.h
+.\uip_arp.o: D:\2\ARM\ARMCC\Bin\..\include\inttypes.h
+.\uip_arp.o: D:\2\ARM\ARMCC\Bin\..\include\stdint.h
+.\uip_arp.o: .\UIP\hello-world.h
+.\uip_arp.o: .\UIP\uip\uipopt.h
+.\uip_arp.o: .\UIP\uip\psock.h
+.\uip_arp.o: .\UIP\uip\pt.h
+.\uip_arp.o: .\UIP\uip\lc.h
+.\uip_arp.o: .\UIP\uip\lc-switch.h
+.\uip_arp.o: D:\2\ARM\ARMCC\Bin\..\include\string.h

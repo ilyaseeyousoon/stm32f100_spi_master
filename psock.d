@@ -1,0 +1,14 @@
+.\psock.o: UIP\uip\psock.c
+.\psock.o: D:\2\ARM\ARMCC\Bin\..\include\stdio.h
+.\psock.o: D:\2\ARM\ARMCC\Bin\..\include\string.h
+.\psock.o: UIP\uip\uipopt.h
+.\psock.o: .\UIP\uip-conf.h
+.\psock.o: D:\2\ARM\ARMCC\Bin\..\include\inttypes.h
+.\psock.o: D:\2\ARM\ARMCC\Bin\..\include\stdint.h
+.\psock.o: .\UIP\hello-world.h
+.\psock.o: .\UIP\uip\uipopt.h
+.\psock.o: .\UIP\uip\psock.h
+.\psock.o: .\UIP\uip\pt.h
+.\psock.o: .\UIP\uip\lc.h
+.\psock.o: .\UIP\uip\lc-switch.h
+.\psock.o: UIP\uip\uip.h

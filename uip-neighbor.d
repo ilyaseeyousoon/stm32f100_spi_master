@@ -1,0 +1,14 @@
+.\uip-neighbor.o: UIP\uip\uip-neighbor.c
+.\uip-neighbor.o: UIP\uip\uip-neighbor.h
+.\uip-neighbor.o: UIP\uip\uip.h
+.\uip-neighbor.o: UIP\uip\uipopt.h
+.\uip-neighbor.o: .\UIP\uip-conf.h
+.\uip-neighbor.o: D:\2\ARM\ARMCC\Bin\..\include\inttypes.h
+.\uip-neighbor.o: D:\2\ARM\ARMCC\Bin\..\include\stdint.h
+.\uip-neighbor.o: .\UIP\hello-world.h
+.\uip-neighbor.o: .\UIP\uip\uipopt.h
+.\uip-neighbor.o: .\UIP\uip\psock.h
+.\uip-neighbor.o: .\UIP\uip\pt.h
+.\uip-neighbor.o: .\UIP\uip\lc.h
+.\uip-neighbor.o: .\UIP\uip\lc-switch.h
+.\uip-neighbor.o: D:\2\ARM\ARMCC\Bin\..\include\string.h
