@@ -369,7 +369,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\CMSIS\CM3\DeviceSupport\ST\STM32F10x;.\user\inc;.\user\src;.\user;.\STM32F10x_StdPeriph_Driver;.\STM32F10x_StdPeriph_Driver\inc;.\STM32F10x_StdPeriph_Driver\src;.\CMSIS</IncludePath>
+              <IncludePath>.\CMSIS\CM3\DeviceSupport\ST\STM32F10x;.\user\inc;.\user\src;.\user;.\STM32F10x_StdPeriph_Driver;.\STM32F10x_StdPeriph_Driver\inc;.\STM32F10x_StdPeriph_Driver\src;.\CMSIS;.\1\uIP;.\UIP</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -554,6 +554,48 @@
         </Group>
         <Group>
           <GroupName>New Group</GroupName>
+          <Files>
+            <File>
+              <FileName>hello-world.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\UIP\hello-world.c</FilePath>
+            </File>
+            <File>
+              <FileName>enc28j60.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\UIP\enc28j60.c</FilePath>
+            </File>
+            <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\UIP\delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>psock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\1\uIP\psock.c</FilePath>
+            </File>
+            <File>
+              <FileName>uip.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\1\uIP\uip.c</FilePath>
+            </File>
+            <File>
+              <FileName>uip_arp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\1\uIP\uip_arp.c</FilePath>
+            </File>
+            <File>
+              <FileName>uiplib.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\1\uIP\uiplib.c</FilePath>
+            </File>
+            <File>
+              <FileName>uip-neighbor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\1\uIP\uip-neighbor.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>

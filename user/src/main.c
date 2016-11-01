@@ -272,34 +272,25 @@ int main(void)
 	GPIO_SetBits(GPIOA,GPIO_Pin_4);
 GPIO_SetBits(GPIOA,GPIO_Pin_6);
 //SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
-	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);	delay_ms(100000);
-uint16_t data[15] ;
-	data[0]=0x01;
-	data[1]=0x02;
-	data[2]=0x03;
-	data[3]=0x04;
-	data[4]=0x05;
-	data[5]=0x06;
-	data[6]=0x07;
-	data[7]=0x08;
-	data[8]=0x09;
-	data[9]=0x10;
-	data[10]=0x11;
-	data[11]=0x12;
-	data[12]=0x13;
-	data[13]=0x14;
-	data[14]=0x15;
-
-	uint16_t u=0;
+	struct uip_eth_addr mac = { { 0x00, 0x12, 0x34, 0x56, 0x78, 0x00 } };
+uip_ipaddr_t ipaddr;
+enc28j60_init(mac.addr);
+//uip_init();// тут проблемы
+//uip_arp_init();
+//hello_world_init();
+//uip_setethaddr(mac);
+//uip_ipaddr(ipaddr, 192, 168, 0, 57);
+//uip_sethostaddr(ipaddr);
+//uip_ipaddr(ipaddr, 192, 168, 0, 1);
+//uip_setdraddr(ipaddr);
+//uip_ipaddr(ipaddr, 255, 255, 255, 0);
+//uip_setnetmask(ipaddr);
  while(1)
     {
-			if (u<15)
-			{
-for(i=0;i<1000000;i++){}
-		delay_ms(10000);
+			
 		GPIO_ResetBits(GPIOA,GPIO_Pin_4);
 		delay_ms(15);
-		 SPI_I2S_SendData(SPI1, data[u]);  //1 bait	
+		 SPI_I2S_SendData(SPI1, 0x55);  //1 bait	
 		while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET)	
 		;
 		if (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == SET)
@@ -308,17 +299,11 @@ for(i=0;i<1000000;i++){}
 			;
 				delay_ms(10);
 					GPIO_SetBits(GPIOA,GPIO_Pin_4);
-		m=m+1;
-    u=u+1;
 		}
-	    }
-			else
-			{
-			delay_ms(10000);delay_ms(10000);delay_ms(10000);delay_ms(10000);delay_ms(10000);delay_ms(10000);delay_ms(10000);delay_ms(10000);
-				u=0;
+	    
 			
 			}
-		    }	
+		    
 	        }
 	
       

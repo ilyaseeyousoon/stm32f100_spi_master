@@ -82,7 +82,7 @@
 #include "uip.h"
 #include "uipopt.h"
 #include "uip_arch.h"
-#include "hello-world.h"
+
 #if UIP_CONF_IPV6
 #include "uip-neighbor.h"
 #endif /* UIP_CONF_IPV6 */

@@ -1,0 +1,14 @@
+.\uip-fw.o: 1\uIP\uip-fw.c
+.\uip-fw.o: 1\uIP\uip.h
+.\uip-fw.o: 1\uIP\uipopt.h
+.\uip-fw.o: 1\uIP\uip-conf.h
+.\uip-fw.o: D:\2\ARM\ARMCC\Bin\..\include\stdint.h
+.\uip-fw.o: .\UIP\hello-world.h
+.\uip-fw.o: .\1\uIP\uipopt.h
+.\uip-fw.o: .\1\uIP\psock.h
+.\uip-fw.o: .\1\uIP\pt.h
+.\uip-fw.o: .\1\uIP\lc.h
+.\uip-fw.o: .\1\uIP\lc-switch.h
+.\uip-fw.o: 1\uIP\uip_arch.h
+.\uip-fw.o: 1\uIP\uip-fw.h
+.\uip-fw.o: D:\2\ARM\ARMCC\Bin\..\include\string.h
